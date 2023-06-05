@@ -1,7 +1,7 @@
 // Core
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // Components
 import { TextField } from './_Forms/TextField';
 import { Button } from './Button';
@@ -10,12 +10,9 @@ import { Grid, Box } from '@mui/material';
 
 // Engine
 import { addHeroAsync } from '../../engine/core/thanos-glove/saga/asyncActions';
-import { selectorsThanosGlove } from '../../engine/core/thanos-glove/selectors';
 
 export function ThanosGlove() {
    const dispatch = useDispatch();
-   const hero = useSelector(selectorsThanosGlove.heroes);
-   console.log(hero);
 
    //    const onValidate = (value) => {
    //       const errors = {};
