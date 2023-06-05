@@ -8,7 +8,9 @@ const thanosGlove = createSlice({
    },
    reducers: {
       addHero: (state, action) => {
-         state.heroes = action.payload;
+         const hero = action.payload;
+         let heroes = [...state.heroes];
+         state.heroes = [hero, ...heroes];
          localStorage.setItem('hero', JSON.stringify(state.heroes));
       },
    },

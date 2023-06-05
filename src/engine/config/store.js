@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { thanosGloveReducer } from '../core/thanos-glove/slice';
-// import rootSaga from './rootSaga';
+import rootSaga from './rootSaga';
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
    createReduxHistoryContext({
@@ -22,6 +22,6 @@ export const store = configureStore({
    middleware: () => [routerMiddleware, sagaMiddleware],
 });
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 export const history = createReduxHistory(store);

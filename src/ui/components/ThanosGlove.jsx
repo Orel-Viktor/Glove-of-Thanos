@@ -1,19 +1,21 @@
 // Core
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // Components
 import { TextField } from './_Forms/TextField';
 import { Button } from './Button';
-
 // Parts
 import { Grid, Box } from '@mui/material';
 
+// Engine
+import { addHeroAsync } from '../../engine/core/thanos-glove/saga/asyncActions';
+import { selectorsThanosGlove } from '../../engine/core/thanos-glove/selectors';
+
 export function ThanosGlove() {
-   //    const dispatch = useDispatch();
-   //    const currentTrackingNumber = useSelector(
-   //       selectorsTrackingPackage.trackingNumber
-   //    );
+   const dispatch = useDispatch();
+   const hero = useSelector(selectorsThanosGlove.heroes);
+   console.log(hero);
 
    //    const onValidate = (value) => {
    //       const errors = {};
@@ -31,9 +33,8 @@ export function ThanosGlove() {
    //       return errors;
    //    };
    const onSubmit = (values, formApi) => {
+      dispatch(addHeroAsync(values));
       const { reset } = formApi;
-      console.log(formApi);
-      console.log(values);
       reset();
    };
    return (
@@ -63,8 +64,8 @@ export function ThanosGlove() {
                      >
                         <Grid item={true} xs={5}>
                            <Field
-                              name="thanos-glove"
-                              label="thanos-glove"
+                              name="thanosGlove"
+                              label="thanosGlove"
                               component={TextField}
                            />
                         </Grid>
