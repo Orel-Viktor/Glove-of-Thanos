@@ -1,33 +1,31 @@
+// Core
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { HistoryRouter } from 'redux-first-history/rr6';
+
+// Components
+import { Layout } from './Layout';
+// Parts
+import { history } from '../../engine/config/store';
+// Engine
+import { pages } from '../../engine/config/routers';
+
 function App() {
-   let heroes = [
-      'artem',
-      'orel',
-      'jeka',
-      'goft',
-      'gunt',
-      'dimon',
-      'denny',
-      'natasha',
-      'igorek',
-      'kolyan',
-   ];
-   function getRandomInt(max) {
-      return Math.floor(Math.random() * max);
-   }
-   const killHeroes = () => {
-      let luckyHeroes = [];
-      let condition = Math.floor(heroes.length / 2);
-      do {
-         let random = getRandomInt(heroes.length);
-         let luckyHero = heroes[random];
-         luckyHeroes.includes(luckyHero) ? null : luckyHeroes.push(luckyHero);
-      } while (luckyHeroes.length < condition);
-      heroes = luckyHeroes;
-      console.log(heroes);
-   };
-   killHeroes();
-   killHeroes();
-   killHeroes();
+   return (
+      <HistoryRouter history={history}>
+         <Routes>
+            <Route path="/" element={<Layout />}>
+               {pages.map((route) => (
+                  <Route
+                     key={route.path}
+                     path={route.path}
+                     element={route.element}
+                  />
+               ))}
+            </Route>
+         </Routes>
+      </HistoryRouter>
+   );
 }
 
 export default App;
