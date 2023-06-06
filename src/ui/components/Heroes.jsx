@@ -5,12 +5,15 @@ import { useSelector } from 'react-redux';
 import { selectorsThanosGlove } from '../../engine/core/thanos-glove/selectors';
 // Parts
 import { Box } from '@mui/material';
+// Components
+import { KillHeroes } from './KillHeroes';
 
 export function Heroes() {
    const heroes = useSelector(selectorsThanosGlove.heroes);
    console.log('Герои', heroes);
    return (
       <Box>
+         <KillHeroes sx={{ margin: '0 0 20px 0' }} />
          {heroes.length ? (
             heroes.map((elem, id) => {
                return (

@@ -13,8 +13,13 @@ const thanosGlove = createSlice({
          state.heroes = [hero, ...heroes];
          localStorage.setItem('hero', JSON.stringify(state.heroes));
       },
+      killHeroes: (state, action) => {
+         const heroes = action.payload;
+         state.heroes = heroes;
+         localStorage.setItem('hero', JSON.stringify(state.heroes));
+      },
    },
 });
 
-export const { addHero } = thanosGlove.actions;
+export const { addHero, killHeroes } = thanosGlove.actions;
 export const thanosGloveReducer = thanosGlove.reducer;

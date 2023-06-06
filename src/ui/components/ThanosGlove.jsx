@@ -77,7 +77,7 @@ export function ThanosGlove() {
                               xs={4}
                               disabled={!valid}
                            >
-                              Send
+                              Додати героя
                            </Button>
                         </Grid>
                      </Grid>
