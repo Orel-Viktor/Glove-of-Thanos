@@ -14,21 +14,15 @@ import { addHeroAsync } from '../../engine/core/thanos-glove/saga/asyncActions';
 export function ThanosGlove() {
    const dispatch = useDispatch();
 
-   //    const onValidate = (value) => {
-   //       const errors = {};
-   //       const regExpDigit = /^\d+$/;
-   //       if (value.tracking === undefined) {
-   //          errors.tracking = 'Введите значние';
-   //       } else if (!regExpDigit.test(value.tracking)) {
-   //          errors.tracking =
-   //             'допускаются только числа,возможно в поле есть пробелы';
-   //       } else if (value.tracking.length < 14) {
-   //          errors.tracking = 'вы ввели меньше 14 цифр';
-   //       } else if (value.tracking.length > 14) {
-   //          errors.tracking = 'вы ввели больше 14 цифр';
-   //       }
-   //       return errors;
-   //    };
+   const onValidate = (value) => {
+      const errors = {};
+
+      value.thanosGlove === undefined
+         ? (errors.thanosGlove = 'введіть значеня')
+         : null;
+
+      return errors;
+   };
    const onSubmit = (values, formApi) => {
       dispatch(addHeroAsync(values));
       const { reset } = formApi;
@@ -37,10 +31,7 @@ export function ThanosGlove() {
    return (
       <div>
          <Form
-            // initialValues={{
-            //    tracking: currentTrackingNumber,
-            // }}
-            // validate={onValidate}
+            validate={onValidate}
             onSubmit={onSubmit}
             render={(formProps) => {
                const { handleSubmit, valid } = formProps;
