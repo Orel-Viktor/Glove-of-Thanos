@@ -7,7 +7,7 @@ import { Button } from './Button';
 import { selectorsThanosGlove } from '../../engine/core/thanos-glove/selectors';
 import { killHalfHeroes } from '../../engine/core/thanos-glove/saga/asyncActions';
 
-export function KillHeroes(props) {
+export function KillHeroesButton(props) {
    const dispatch = useDispatch();
    const heroes = useSelector(selectorsThanosGlove.heroes);
    const killHeroes = () => {

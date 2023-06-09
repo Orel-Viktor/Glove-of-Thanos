@@ -18,9 +18,8 @@ export function* callKillHalfHeroesWorker(action) {
       do {
          let random = getRandomInt(heroes.length);
          let luckyHero = heroes[random];
-         luckyHeroes.includes(luckyHero[random])
-            ? null
-            : luckyHeroes.push(luckyHero);
+         console.log(luckyHero[random]);
+         luckyHeroes.includes(luckyHero) ? null : luckyHeroes.push(luckyHero);
       } while (luckyHeroes.length < condition);
       heroes = luckyHeroes;
    };

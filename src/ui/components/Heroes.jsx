@@ -6,25 +6,37 @@ import { selectorsThanosGlove } from '../../engine/core/thanos-glove/selectors';
 // Parts
 import { Box } from '@mui/material';
 // Components
-import { KillHeroes } from './KillHeroes';
+import { KillHeroesButton } from './KillHeroes';
+import { AliveHero } from './AliveHero';
 
 export function Heroes() {
    const heroes = useSelector(selectorsThanosGlove.heroes);
-   console.log('Герои', heroes);
-   return (
+   const aliveHero = useSelector(selectorsThanosGlove.aliveHero);
+   console.log(aliveHero);
+   return aliveHero.length ? (
+      <AliveHero />
+   ) : (
       <Box>
-         <KillHeroes sx={{ margin: '0 0 20px 0' }} />
-         {heroes.length ? (
-            heroes.map((elem, id) => {
-               return (
-                  <Box key={elem + id}>
-                     <HeroesInner heroes={heroes[id]} />
-                  </Box>
-               );
-            })
-         ) : (
-            <Box>Герої</Box>
-         )}
+         <KillHeroesButton sx={{ margin: '0 0 20px 0' }} />
+         <Box sx={{ color: 'secondary.info', fontSize: '30px' }}>
+            Герої що підлягают відбору
+         </Box>
+
+         {heroes.length
+            ? heroes.map((elem, id) => {
+                 return (
+                    <Box
+                       sx={{
+                          fontSize: '20px',
+                          color: 'secondary.main',
+                       }}
+                       key={elem + id}
+                    >
+                       <HeroesInner heroes={elem} />
+                    </Box>
+                 );
+              })
+            : null}
       </Box>
    );
 }
