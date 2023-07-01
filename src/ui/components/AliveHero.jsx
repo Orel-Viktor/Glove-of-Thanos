@@ -42,7 +42,8 @@ export function AliveHeroInner(props) {
                fontSize: '30px',
             }}
          >
-            Герой, що вижив {hero}{' '}
+            <div> Герой, що вижив {hero.heroName} </div>
+            <img src={hero.heroPicture} alt={hero.heroName} />
          </Box>
       </Box>
    );
