@@ -63,7 +63,7 @@ export function HeroesInner(props) {
       <Box>
          {' '}
          <div>{heroes.heroName}</div>
-         <img src={heroes.heroPicture} alt={heroes.heroName} />
+         <img width={100} src={heroes.heroPicture} alt={heroes.heroName} />
       </Box>
    );
 }
