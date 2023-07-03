@@ -34,18 +34,19 @@ export function* callAddHeroWorker(action) {
    //    .then((data) => console.log(data));
 
    const imageList = yield call(getImagesList, hero.thanosGlove);
+   console.log(imageList);
    // console.log(imageList.hits.find((elem, i) => elem[i] === elem[0]));
-   const imageHero = imageList.hits.find((elem, i) => elem[i] === elem[0])
-      .webformatURL
-      ? imageList.hits.find((elem, i) => elem[i] === elem[0]).webformatURL
-      : null;
+   // const imageHero = imageList.hits.find((elem, i) => elem[i] === elem[0])
+   //    .webformatURL
+   //    ? imageList.hits.find((elem, i) => elem[i] === elem[0]).webformatURL
+   //    : null;
 
-   console.log(imageHero);
+   // console.log(imageHero);
 
    // const heroUrlPicture = data.hits[0].largeImageURL;
    const dataHero = {
       heroName: hero.thanosGlove,
-      heroPicture: imageHero,
+      // heroPicture: imageHero,
    };
 
    yield put(addHero(dataHero));
